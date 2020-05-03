@@ -30,9 +30,11 @@ def command(update, context):
 	file = file.get_file().download()
 	print(2)
 	print(file)
+	os.system('mkdir tmp')
+	os.system('mv %s tmp/%s' % (file, file))
 	print(3)
 	output_name = 'tmp/' + getOutputName()
-	command = '../sox-14.4.2/sox ' + file + ' ' + output_name + \
+	command = '../sox-14.4.2/sox tmp/' + file + ' ' + output_name + \
 		' silence 1 0.1 1% -1 0.1 1%'
 	print(command)
 	os.system(command)
